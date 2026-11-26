@@ -11,21 +11,19 @@ import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.RobotModeTriggers;
 import frc.robot.commands.DrivingCommands.TeleopDriveCommand;
 import frc.robot.subsystems.Swerve;
-import frc.robot.util.Auto;
 import frc.robot.util.Controller;
 
 public class Robot extends TimedRobot {
 
     private RobotContainer robotContainer;
     private final Timer timer = new Timer();
-    private Auto auto;
 
     public Robot(){
         /**
          * Robot constructor for the robot.
          * 
          * @args None
-         * @author Max Clemetson, Jake Xie, Justin Baratta, Siddhartha Hiremath
+         * @author Vibhav Ganesan, Max Clemetson, Jake Xie, Justin Baratta, Siddhartha Hiremath
          * @since 2025-10
          * @return void
          */
@@ -45,11 +43,9 @@ public class Robot extends TimedRobot {
 
         Constants.AutoConstants.kAutoFactory = autoFactory;
 
-        auto = new Auto(autoFactory, swerve);
-        System.out.println("Auto initialized.");
-        RobotModeTriggers.autonomous().onTrue(auto.getAutoCommand());
+
         // Optionally disable the joystick connection warning
-        DriverStation.silenceJoystickConnectionWarning(true);
+        //DriverStation.silenceJoystickConnectionWarning(true);
     }
 
     @Override
@@ -68,11 +64,8 @@ public class Robot extends TimedRobot {
          * @return void
          */
         timer.restart();
-        Command autoCommand = auto.getAutoCommand();
 
-        if (autoCommand != null) {
-            autoCommand.schedule();
-        }
+
 
     }
     
